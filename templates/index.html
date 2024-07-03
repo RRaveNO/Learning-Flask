@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт Ворона</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+   <div class="background">
+       <div class="main_page">
+           <div class="header_main_page">Главная страница</div>
+       </div>
+    <a href="{{ url_for('new_post') }}"><button class="button_main">Задачи</button></a>
+    </div>
+</body>
+</html>

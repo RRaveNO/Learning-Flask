@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт Ворона</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background">
+    <div class="solid" style="border-bottom: dotted 5px #db0000"></div>
+    <h1 class="header">Это мой первый сайт.</h1>
+
+    <p class="list">Задачи:</p>
+    <table class="table" style="color: #2e2e2e">
+        <tr>
+            <td class="td_h"><b>Задача</b></td>
+            <td class="td_h"><b>Статус</b></td>
+        </tr>
+        <tr>
+            <td class="td"><b>1. Созда оформление для сайта(текст, фон)</b></td>
+            <td class="td"><b>Выполняется...</b></td>
+        </tr>
+        <tr>
+            <td class="td"><b>2. Добавить новые страницы сайту</b></td>
+            <td class="td"><b>Выполняется...</b></td>
+        </tr>
+    </table>
+    <a href="{{ url_for('index') }}"><button class="button_tasks">На главную...</button></a>
+    </div>
+</body>
+</html>
