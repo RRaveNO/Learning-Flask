@@ -31,11 +31,15 @@
             <td class="td"><b>2. Добавить новые страницы сайту</b></td>
             <td class="td"><b>Выполняется...</b></td>
             <td class="td">
-                <form method="POST" action="enter_checkbox">
+                <form method="POST">
+                    {% for state in checkbox_state %}
                     <div>
-                    <input class="button_check" type="checkbox" id="scales1" name="scales" checked />
-                    <label for="scales"></label>
-                </div>
+                        <input type="checkbox" name="checkboxtable_{{ state['id'] }}" id="checkbox_{{ state['id'] }}" {% if state['checkbox_column'] %}checked{% endif %} />
+                        <input type="hidden" name="checkbox_id" value="{{ state['id'] }}" />
+                        <label for="checkbox_{{ state['id'] }}"></label>
+                    </div>
+                    {% endfor %}
+                    <button class="button_check" type="submit"></button>
                 </form>
             </td>
         </tr>

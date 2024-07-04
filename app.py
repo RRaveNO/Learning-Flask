@@ -15,30 +15,33 @@ def get_db_connection():
     conn = sqlite3.connect('database.db')
     return conn
 
-def close_db_connection():
-    conn=get_db_connection()
-    if conn is not None:
-        conn.close()
+def close_db_connection(conn):
+    conn.close()
 
 def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute('''CREATE TABLE IF NOT EXISTS checkboxes(id INTEGER PRIMARY KEY, checkbox_column TEXT NOT NULL)''')
+    cursor.execute('''CREATE TABLE IF NOT EXISTS checkboxTable(id INTEGER PRIMARY KEY, checkbox_column BOOLEAN)''')
     conn.commit()
-    close_db_connection()
+    conn.close()
 
-@app.route('/tasks', methods = ['GET', 'POST'])
+@app.route('/tasks', methods=['GET', 'POST'])
 def tasks_page():
-    if request.method == 'GET':
-        checkbox_value = request.args.get('checkbox')
+    if request.method == 'POST':
+        checkbox_id = request.form['checkbox_id']
+        checkbox_value = request.form['checkboxtable_' + checkbox_id] == 'on'
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO checkboxes(checkbox_column) VALUES (checkbox_column)", (checkbox_value,))
-        cursor.execute('''SELECT FROM checkboxes''')
-        checkboxes = cursor.fetchall()
+        cursor.execute('''UPDATE checkboxTable SET checkbox_column=? WHERE id=?''', (checkbox_value, checkbox_id))
         conn.commit()
-        close_db_connection()
-    return render_template('tasks.html', checkboxes=checkboxes)
+        conn.close()
+    else:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('''SELECT * FROM checkboxTable''')
+        checkbox_states = cursor.fetchall()
+        conn.close()
+    return render_template('tasks.html', checkbox_states=checkbox_states)
 
 if __name__ == '__main__':
     init_db()
