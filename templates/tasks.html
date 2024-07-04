@@ -15,14 +15,29 @@
         <tr>
             <td class="td_h"><b>Задача</b></td>
             <td class="td_h"><b>Статус</b></td>
+            <td class="td_h"></td>
         </tr>
         <tr>
-            <td class="td"><b>1. Созда оформление для сайта(текст, фон)</b></td>
+            <td class="td"><b>1. Создать оформление для сайта(текст, фон)</b></td>
             <td class="td"><b>Выполняется...</b></td>
+            <td class="td">
+                <div>
+                    <input class="button_check" type="checkbox" id="scales0" name="scales" checked />
+                    <label for="scales"></label>
+                </div>
+            </td>
         </tr>
         <tr>
             <td class="td"><b>2. Добавить новые страницы сайту</b></td>
             <td class="td"><b>Выполняется...</b></td>
+            <td class="td">
+                <form method="POST" action="enter_checkbox">
+                    <div>
+                    <input class="button_check" type="checkbox" id="scales1" name="scales" checked />
+                    <label for="scales"></label>
+                </div>
+                </form>
+            </td>
         </tr>
     </table>
     <a href="{{ url_for('index') }}"><button class="button_tasks">На главную</button></a>

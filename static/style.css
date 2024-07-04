@@ -133,6 +133,11 @@
     cursor: pointer;
 }
 
+.button_check{
+    border-radius: 5;
+    color: #fff;
+}
+
 .text_about{
     width: 45%;
     align: center;
