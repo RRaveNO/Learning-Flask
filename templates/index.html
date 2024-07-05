@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru, en">
 <head>
     <meta charset="UTF-8">
     <title>Сайт Ворона</title>
@@ -14,6 +14,13 @@
            <a href="{{url_for('tasks_page')}}"><button class="button_main">Задачи</button></a>
            <a href="{{url_for('about')}}"><button class="button_main">О проекте</button></a>
        </div>
+   <div class="dropdown">
+       <select name="colour" method="POST" action="/">
+           {% for colour in colours %}
+           <option value="{{colour}}"{% if colour == selected_colour %}selected{% endif %}>{{colour}}</option>
+           {% endfor %}
+       </select>
+   </div>
    </div>
 </body>
 </html>

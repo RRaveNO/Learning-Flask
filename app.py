@@ -28,7 +28,7 @@ def init_db():
 @app.route('/tasks', methods=['GET', 'POST'])
 def tasks_page():
     if request.method == 'POST':
-        checkbox_id = request.form['checkbox_id']
+        checkbox_id = request.form.get['checkbox_id']
         checkbox_value = request.form['checkboxtable_' + checkbox_id] == 'on'
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -42,6 +42,12 @@ def tasks_page():
         checkbox_states = cursor.fetchall()
         conn.close()
     return render_template('tasks.html', checkbox_states=checkbox_states)
+
+@app.route('/', methods=['GET', 'POST'])
+def dropdown(selected_colour = None):
+    colours = ['Red', 'Blue', 'Black', 'Orange']
+    selected_colour = request.form.get('colour')
+    return render_template('index.html', colours=colours, selected_colour=selected_colour)
 
 if __name__ == '__main__':
     init_db()

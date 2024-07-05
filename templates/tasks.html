@@ -34,7 +34,8 @@
                 <form method="POST">
                     {% for state in checkbox_state %}
                     <div>
-                        <input type="checkbox" name="checkboxtable_{{ state['id'] }}" id="checkbox_{{ state['id'] }}" {% if state['checkbox_column'] %}checked{% endif %} />
+                        <input type="checkbox" name="checkboxtable_{{ state['id'] }}" id="checkbox_{{ state['id'] }}"
+<!--                               {% if state['checkbox_column'] %}checked{% endif %}/>-->
                         <input type="hidden" name="checkbox_id" value="{{ state['id'] }}" />
                         <label for="checkbox_{{ state['id'] }}"></label>
                     </div>
