@@ -139,11 +139,55 @@
 }
 
 .dropdown{
-    width: 0%;
+    width: 100%;
     display: flex;
     margin-top: 5px;
     margin-left: auto;
     margin-right: auto;
+    size: 30px;
+}
+
+.button_submit{
+    background-color: #0e69ab;
+    color: #fff;
+}
+
+.registration{
+    display: flex;;
+    margin-top: 4px;
+    border-style: solid;
+    border-color: #000;
+    margin-left: auto;
+    margin-right: auto;
+}
+.login_down_text{
+    display: flex;
+    justify-content: center;
+    color: #000
+}
+
+.login_error_text{
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    color: #db0707
+}
+
+.login_reg_button{
+    border-style: solid;
+    border-color: #000;
+    display: flex;
+    justify-content: center;
+    margin-left: 850px;
+    margin-right: 850px;
+    background-color: #c7c7c7;
+    color: #000
+}
+
+.reg_text{
+    display: flex;
+    justify-content: center;
+    color: #000
 }
 
 .text_about{

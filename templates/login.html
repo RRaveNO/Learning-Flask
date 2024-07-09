@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="background">
+       <div class="main_page">
+           <div class="header_main_page">Вход</div>
+       </div>
+        <form method="POST" action="/login">
+    <input class="registration" type="text" name="username" placeholder="Имя пользователя" required>
+    <input class="registration" type="password" name="password" placeholder="Пароль" required>
+    <button class="registration" type="submit">Войти</button>
+</form>
+    {% if error %}
+    <p class="login_error_text">{{ error }}</p>
+    {% endif %}
+    <div class="login_down_text">
+        <p>Нет аккаунта?</p>
+    </div>
+    <div class="login_reg_button">
+        <a href="{{ url_for('registration') }}">Зарегистрироваться</a>
+    </div>
+</div>
+</body>
+</html>

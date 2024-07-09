@@ -11,15 +11,10 @@
            <div class="header_main_page">Главная страница</div>
        </div>
        <div>
+           <a href="{{url_for('registration')}}"><button class="button_main">Регистрация</button></a>
            <a href="{{url_for('tasks_page')}}"><button class="button_main">Задачи</button></a>
            <a href="{{url_for('about')}}"><button class="button_main">О проекте</button></a>
        </div>
-   <div class="dropdown">
-       <select name="colour" method="POST" action="/">
-           {% for colour in colours %}
-           <option value="{{colour}}"{% if colour == selected_colour %}selected{% endif %}>{{colour}}</option>
-           {% endfor %}
-       </select>
    </div>
    </div>
 </body>
