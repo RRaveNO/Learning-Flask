@@ -15,7 +15,15 @@
            <a href="{{url_for('tasks_page')}}"><button class="button_main">Задачи</button></a>
            <a href="{{url_for('about')}}"><button class="button_main">О проекте</button></a>
        </div>
-   </div>
+       <div class="login_window">
+           <table>
+               <tr>
+                   <td>
+                       {{ user }}
+                   </td>
+               </tr>
+           </table>
+       </div>
    </div>
 </body>
 </html>

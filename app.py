@@ -6,13 +6,16 @@ app = Flask(__name__)
 app.secret_key = 'tribnribnien3iu43bnu3ib53u'
 check_list = ['First', 'Second', 'Third']
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
+
 @app.route('/about')
 def about():
     return render_template('about.html')
+
 
 @app.route('/tasks', methods=['GET', 'POST'])
 def tasks_page():
@@ -23,30 +26,31 @@ def tasks_page():
     else:
         return render_template('tasks.html', options=check_list)
 
-@app.route('/registration', methods = ['GET', 'POST'])
+
+@app.route('/registration', methods=['GET', 'POST'])
 def registration():
     if request.method == 'POST':
-        # получение даннных из формы регистрации
         username = request.form['username']
         password = request.form['password']
         password_confirm = request.form['password_confirm']
         if password != password_confirm:
             return render_template('reg.html', error="Пароли не совпадают")
 
-        hashed_password = generate_password_hash(password, method='pbkdf2:sha256') # хешируем пароль
+        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
         db = db_connection()
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM users WHERE username=?", (username,)) # тут ищем нет ли уже такого юзера в бд
-        user = cursor.fetchone() # получаем результат запроса
+        cursor.execute("SELECT * FROM users WHERE username=?", (username,))
+        user = cursor.fetchone()
         if user:
-            return render_template('reg.html', error="Пользователь уже существует") # показать стр. регистрации с ошибкой
+            return render_template('reg.html', error="Пользователь уже существует")
         else:
             cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
             db.commit()
             return redirect(url_for('login'))
     return render_template('reg.html')
 
-@app.route('/login', methods = ['GET', 'POST'])
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -71,6 +75,7 @@ def db_connection():
     conn = sqlite3.connect('database.db')
     return conn
 
+
 def init_db():
     with app.app_context():
         conn = db_connection()
@@ -81,6 +86,17 @@ def init_db():
                         password TEXT NOT NULL);''')
         conn.commit()
 
+
+def login_window(username, user_window = None):
+    conn = db_connection()
+    cursor = conn.cursor()
+    cursor.execute('''SELECT * FROM users WHERE username = ?''', (username,))
+    user = cursor.fetchone()
+    if user:
+        user = user[0]
+    else:
+        user = None
+    return render_template('index.html', user_window=user)
 
 
 if __name__ == '__main__':

@@ -202,6 +202,11 @@
     color: #000
 }
 
+.login_window{
+    display: flex;
+    margin-top: 50px;
+}
+
 a, a:hover, a:visited{
     color: inherit;
     text-decoration: none;
