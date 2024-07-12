@@ -212,3 +212,19 @@ a, a:hover, a:visited{
     text-decoration: none;
 }
 
+.login_button_main{
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    width: 10%;
+    background-color: #0e69ab;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+}
+
