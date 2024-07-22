@@ -204,7 +204,25 @@
 
 .login_window{
     display: flex;
-    margin-top: 50px;
+    position: relative;
+    z-index: 19;
+    font-size: 1.5em;
+    margin-left: 1640px;
+}
+
+.logout{
+    display: flex;
+    position: fixed;
+    width: 10%;
+    padding-right: 20px;
+    padding-top: 0px;
+    z-index: 19;
+    font-size: 1.5em;
+    margin-left: 1640px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0e69ab;
+    top: 30px;
 }
 
 a, a:hover, a:visited{

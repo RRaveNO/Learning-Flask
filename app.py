@@ -4,13 +4,14 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'tribnribnien3iu43bnu3ib53u'
-check_list = ['First', 'Second', 'Third']
+check_list = ['Отменено', 'В работе', 'Завершено']
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
-
+    username = session.get('username')
+    user_id = login_window(username)
+    return render_template('index.html', user_id=user_id, username=username)
 
 @app.route('/about')
 def about():
@@ -70,6 +71,10 @@ def login():
         return render_template('login.html', error=error)
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect((url_for('login')))
 
 def db_connection():
     conn = sqlite3.connect('database.db')
@@ -86,17 +91,21 @@ def init_db():
                         password TEXT NOT NULL);''')
         conn.commit()
 
+@app.route('/test_page')
+def test_page():
+    username = session.get('username')
+    user_id = login_window(username)
+    return render_template('test_page.html', user_id=user_id)
 
-def login_window(username, user_window = None):
+def login_window(username):
     conn = db_connection()
     cursor = conn.cursor()
     cursor.execute('''SELECT * FROM users WHERE username = ?''', (username,))
     user = cursor.fetchone()
     if user:
-        user = user[0]
+        return user[1]
     else:
-        user = None
-    return render_template('index.html', user_window=user)
+        error = "Ошибка получения имени пользователя"
 
 
 if __name__ == '__main__':
