@@ -34,7 +34,8 @@
        </div>
        <div>
            {% if not user_id %}
-                <a href="{{url_for('registration')}}"><button class="button_main">Регистрация</button></a>
+                <a href="{{url_for('registration')}}"><button class="button_main_reg">Регистрация</button></a>
+                <a href="{{url_for('login')}}"><button class="button_main_log">Вход</button></a>
            {% endif %}
            <a href="{{url_for('tasks_page')}}"><button class="button_main">Задачи</button></a>
            <a href="{{url_for('about')}}"><button class="button_main">О проекте</button></a>

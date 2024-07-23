@@ -103,6 +103,46 @@
     font-size: 2em;
 }
 
+.button_main_reg {
+    position: absolute;
+    top: -5px;
+    right: -15px;
+    width: 135px;
+    height: 25px;
+    margin-left: 200px;
+    margin-right: 100px;
+    margin-top: 43px;
+    padding: 0px;
+    background-color: #0e69ab;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3em;
+}
+
+.button_main_log {
+    position: absolute;
+    top: -5px;
+    right: -15px;
+    width: 55px;
+    height: 25px;
+    margin-left: 200px;
+    margin-right: 40px;
+    margin-top: 43px;
+    padding: 0px;
+    background-color: #0e69ab;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3em;
+}
+
 .button_tasks {
     margin: 10px;
     margin-left: auto;
